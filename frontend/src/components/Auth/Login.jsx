@@ -46,7 +46,7 @@ const Login = () => {
       <section className="authPage">
         <div className="container">
           <div className="header">
-            <img src="/JobZeelogo.png" alt="logo" />
+            <img src="/logo.jpeg" alt="logo" />
             <h3>Login to your account</h3>
           </div>
           <form>
@@ -66,7 +66,7 @@ const Login = () => {
               <div>
                 <input
                   type="email"
-                  placeholder="zk@gmail.com"
+                  placeholder="raunak@gmail.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
