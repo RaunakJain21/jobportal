@@ -42,13 +42,15 @@ export const login = catchAsyncErrors(async (req, res, next) => {
   }
   sendToken(user, 201, res, "User Logged In!");
 });
-
 export const logout = catchAsyncErrors(async (req, res, next) => {
+  // Clear the cookie by setting its value to an empty string and setting an expiration date in the past
   res
-    .status(201)
+    .status(200) // Use 200 OK instead of 201 Created for logout success
     .cookie("token", "", {
       httpOnly: true,
-      expires: new Date(Date.now()),
+      expires: new Date(Date.now()), // This effectively removes the cookie
+      secure: process.env.NODE_ENV === "production", // Ensure the cookie is only sent over HTTPS in production
+      sameSite: "Strict", // Helps mitigate CSRF attacks
     })
     .json({
       success: true,

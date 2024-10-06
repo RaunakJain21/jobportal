@@ -23,19 +23,19 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/v1/user/getuser",
-          {
-            withCredentials: true,
-          }
+          "https://jobportal-2-g2z9.onrender.com/api/v1/user/getuser",
+          { withCredentials: true }
         );
         setUser(response.data.user);
         setIsAuthorized(true);
       } catch (error) {
+        console.error("Error fetching user:", error.response); // Add this
         setIsAuthorized(false);
       }
     };
     fetchUser();
   }, [isAuthorized]);
+  
 
   return (
     <>
